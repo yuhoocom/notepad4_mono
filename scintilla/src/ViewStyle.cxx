@@ -85,6 +85,9 @@ void FontRealised::Realise(Surface &surface, int zoomLevel, Technology technolog
 		constexpr XYPOSITION monospaceWidthEpsilon = 0.000001;	// May need tweaking if monospace fonts vary more
 		measurements.monospaceASCII = scaledVariance < monospaceWidthEpsilon;
 		//measurements.monospaceCharacterWidth = minWidth;
+		if (measurements.monospaceASCII) {
+			measurements.spaceWidth = measurements.aveCharWidth;
+		}
 	} else {
 		measurements.monospaceASCII = false;
 	}
